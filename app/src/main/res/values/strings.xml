@@ -3,4 +3,8 @@
     <string name="instructions">Instructions</string>
     <string name ="instruction_text">You have 30 seconds to click as many dots as possible as soon as the Start button is clicked. Good luck and enjoy!</string>
     <string name="start_button">Start</string>
+    <string name="results_score">Score</string>
+    <string name="results_accuracy">Accuracy</string>
+    <string name="results_title">Thank you for playing! Here are your results:</string>
+    <string name="home_button">Home</string>
 </resources>

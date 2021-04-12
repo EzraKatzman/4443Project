@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    final int MAIN_ACTIVITY = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,14 +20,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View v) {
-        //Testing to see if button works.
-        Toast.makeText(this, "Button works", Toast.LENGTH_SHORT).show();
-
-        //Trying to see if we can start the other activity after we press start
-        Context c = getContext();
-        Intent i = new Intent(c, DotGame.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        c.startActivity(i);
+        //Trying to see if we can start the other activity after we press start button.
+        Intent i = new Intent(getApplicationContext(), DotGame.class);
+        startActivityForResult(i, MAIN_ACTIVITY);
     }
 
 }

@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <Button
+        android:id="@+id/home_button"
+        android:layout_width="162dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="120dp"
+        android:onClick="onHomeClick"
+        android:text="@string/home_button"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/reset_button"
+        android:layout_width="162dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="120dp"
+        android:onClick="onHomeClick"
+        android:text="@string/restart_button"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.659"
+        app:layout_constraintStart_toEndOf="@+id/home_button" />
 
     <TextView
         android:id="@+id/titleID2"
@@ -25,71 +51,69 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/accuracy"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="@string/results_accuracy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/real_accuracy"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score"
-        app:layout_constraintVertical_bias="0.075" />
-
-    <TextView
-        android:id="@+id/real_score"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toEndOf="@+id/score"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
-
-    <TextView
         android:id="@+id/score"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="@string/results_score"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#292727"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
+        app:layout_constraintVertical_bias="0.311" />
+
+    <TextView
+        android:id="@+id/real_score"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintStart_toEndOf="@+id/score"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.311" />
+
+    <TextView
+        android:id="@+id/accuracy"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="@string/results_accuracy"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#292727"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/real_accuracy"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:layout_constraintVertical_bias="0.076" />
 
     <TextView
         android:id="@+id/real_accuracy"
         android:layout_width="140dp"
         android:layout_height="50dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toEndOf="@+id/score"
         app:layout_constraintTop_toBottomOf="@+id/real_score"
-        app:layout_constraintVertical_bias="0.075" />
-
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="173dp"
-        android:layout_height="65dp"
-        android:layout_marginBottom="200dp"
-        android:text="@string/home_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.076" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/result_title"
         android:layout_width="406dp"
-        android:layout_height="63dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
         android:text="@string/results_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#2E2D2D"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleID2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

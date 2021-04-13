@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
@@ -13,25 +14,28 @@
         android:layout_marginEnd="-1dp"
         android:layout_marginRight="-1dp"
         android:layout_marginBottom="390dp"
+        android:gravity="center"
         android:text="@string/instructions"
+        android:textColor="#000000"
         android:textSize="18dp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/titleID"
-        android:layout_width="412dp"
-        android:layout_height="53dp"
+        android:layout_width="372dp"
+        android:layout_height="41dp"
         android:layout_above="@+id/startID"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginRight="-2dp"
-        android:layout_marginBottom="476dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="492dp"
+        android:gravity="center_horizontal"
+        android:text="@string/app_name"
         android:textAlignment="center"
         android:textAllCaps="true"
-        android:textSize="22dp"
-        android:text="@string/app_name"
-        android:gravity="center_horizontal" />
+        android:textColor="#0E0E0E"
+        android:textSize="22dp" />
 
     <Button
         android:id="@+id/startID"
@@ -42,7 +46,8 @@
         android:layout_marginRight="0dp"
         android:layout_marginBottom="116dp"
         android:onClick="onClick"
-        android:text="@string/start_button" />
+        android:text="@string/start_button"
+        app:backgroundTint="#4CAF50" />
 
     <EditText
         android:id="@+id/instructionTextID"
@@ -55,6 +60,7 @@
         android:layout_marginRight="0dp"
         android:layout_marginBottom="107dp"
         android:ems="10"
+        android:enabled="true"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:text="@string/instruction_text"

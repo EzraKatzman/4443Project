@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.Locale;
+import java.util.Random;
 
 public class DotGame extends Activity implements View.OnTouchListener {
 
@@ -18,10 +21,10 @@ public class DotGame extends Activity implements View.OnTouchListener {
     TextView scoreCount;
     CountDownTimer countDownTimer;
     long timeLeftInMilliseconds = 30000;
-    PaintCircle paintcircle;
     RelativeLayout circlepanel;
     int score;
     int seconds;
+    Random random = new Random();
 
 
     @Override
@@ -39,6 +42,18 @@ public class DotGame extends Activity implements View.OnTouchListener {
         seconds = 0;
         score = 0;
 
+        ImageView imageview = new ImageView(DotGame.this);
+        RelativeLayout relativelayout = findViewById(R.id.circlepanel);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+
+        // Add image path from drawable folder.
+        imageview.setImageResource(R.drawable.redcircle);
+        imageview.setLayoutParams(params);
+        relativelayout.addView(imageview);
+        imageview.getLayoutParams().height = 125;
+        imageview.requestLayout();
+
 
         scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
                 , score));
@@ -46,6 +61,8 @@ public class DotGame extends Activity implements View.OnTouchListener {
                 , timeLeftInMilliseconds));
 
         startTimer();
+
+
     }
 
     public void startTimer() {
@@ -77,6 +94,24 @@ public class DotGame extends Activity implements View.OnTouchListener {
 
     }
 
+    public void DrawCircle() {
+        ImageView imageview = new ImageView(DotGame.this);
+        RelativeLayout relativelayout = findViewById(R.id.circlepanel);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+
+
+        imageview.setImageResource(R.drawable.redcircle);
+        imageview.setLayoutParams(params);
+        relativelayout.addView(imageview);
+        imageview.getLayoutParams().height = 125;
+        imageview.requestLayout();
+        imageview.setX(random.nextInt(1000));
+        imageview.setY(random.nextInt(1000));
+        relativelayout.removeAllViews();
+        relativelayout.addView(imageview);
+        imageview.requestLayout();
+    }
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
@@ -84,6 +119,9 @@ public class DotGame extends Activity implements View.OnTouchListener {
                 score += 1;
                 scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
                         , score));
+
+                DrawCircle();
+                circlepanel.invalidate();
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
@@ -92,4 +130,5 @@ public class DotGame extends Activity implements View.OnTouchListener {
         }
         return false;
     }
+
 }

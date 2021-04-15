@@ -79,6 +79,17 @@ public class DotGame extends Activity implements View.OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                score += 1;
+                scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
+                        , score));
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                break;
+
+        }
         return false;
     }
 }

@@ -23,6 +23,8 @@ public class DotGame extends Activity implements View.OnTouchListener {
     long timeLeftInMilliseconds = 30000;
     RelativeLayout circlepanel;
     LinearLayout game;
+
+
     int score;
     int seconds;
     Random random = new Random();
@@ -55,6 +57,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
         relativelayout.addView(imageview);
         imageview.getLayoutParams().height = 125;
         imageview.requestLayout();
+
 
 
         scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
@@ -98,9 +101,26 @@ public class DotGame extends Activity implements View.OnTouchListener {
 
     public void DrawCircle() {
         ImageView imageview = new ImageView(DotGame.this);
+
         RelativeLayout relativelayout = findViewById(R.id.circlepanel);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
+        imageview.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
+                                , score));
+                        DrawCircle();
+                        circlepanel.invalidate();
+                        score += 1;
+                        break;
+                }
+                return false;
+            }
+        });
 
         imageview.setImageResource(R.drawable.redcircle);
         imageview.setLayoutParams(params);
@@ -119,23 +139,18 @@ public class DotGame extends Activity implements View.OnTouchListener {
         imageview.requestLayout();
     }
 
+
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                score += 1;
                 scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
                         , score));
-
                 DrawCircle();
                 circlepanel.invalidate();
                 break;
-            case MotionEvent.ACTION_UP:
-            case MotionEvent.ACTION_CANCEL:
-                break;
-
         }
         return false;
     }
+    }
 
-}

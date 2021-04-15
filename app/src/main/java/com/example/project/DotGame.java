@@ -58,6 +58,21 @@ public class DotGame extends Activity implements View.OnTouchListener {
         imageview.getLayoutParams().height = 125;
         imageview.requestLayout();
 
+        imageview.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        score = 1;
+                        scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
+                                , score));
+                        circlepanel.invalidate();
+                        break;
+                }
+                return false;
+            }
+        });
 
 
         scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
@@ -111,11 +126,11 @@ public class DotGame extends Activity implements View.OnTouchListener {
             public boolean onTouch(View v, MotionEvent event) {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
+                        DrawCircle();
+                        score += 1;
                         scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
                                 , score));
-                        DrawCircle();
                         circlepanel.invalidate();
-                        score += 1;
                         break;
                 }
                 return false;
@@ -144,8 +159,6 @@ public class DotGame extends Activity implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
-                        , score));
                 DrawCircle();
                 circlepanel.invalidate();
                 break;

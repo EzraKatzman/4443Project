@@ -12,7 +12,6 @@ import java.util.Calendar;
 public class DotGame extends Activity {
 
     final int MAIN_ACTIVITY = 100;
-    int score;
     TextView timer;
     CountDownTimer countDownTimer;
     long timeLeftInMilliseconds = 30000;
@@ -20,7 +19,7 @@ public class DotGame extends Activity {
     @Override
     public void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game);
+        setContentView(new PaintCircle(this));
         timer = findViewById(R.id.timer);
         startTimer();
     }
@@ -30,7 +29,6 @@ public class DotGame extends Activity {
             @Override
             public void onTick(long millisUntilFinished) {
                 timeLeftInMilliseconds = millisUntilFinished;
-                updateTimer();
             }
 
             @Override
@@ -41,16 +39,6 @@ public class DotGame extends Activity {
         }.start();
     }
 
-    public void updateTimer() {
-        int seconds = (int) timeLeftInMilliseconds % 600000 / 1000;
-        String timeLeft;
-        timeLeft = "0 : ";
-        if(seconds < 10) {
-            timeLeft += "0";
-        }
-        timeLeft += seconds;
-        timer.setText(timeLeft);
-    }
 
 
 }

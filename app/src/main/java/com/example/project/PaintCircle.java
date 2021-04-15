@@ -7,8 +7,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import java.util.Random;
-
 public class PaintCircle extends View {
 
 
@@ -47,12 +45,5 @@ public class PaintCircle extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        Random random = new Random();
-        int minimum_y = 200;
-        int maximum_y = 1000;
-
-        canvas.drawCircle(25, 400, 25, paint);
     }
-
 }

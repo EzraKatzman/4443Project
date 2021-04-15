@@ -22,6 +22,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
     CountDownTimer countDownTimer;
     long timeLeftInMilliseconds = 30000;
     RelativeLayout circlepanel;
+    LinearLayout game;
     int score;
     int seconds;
     Random random = new Random();
@@ -31,7 +32,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
-
+        game = findViewById(R.id.games);
         circlepanel = findViewById(R.id.circlepanel);
         circlepanel.setOnTouchListener(this);
 
@@ -44,7 +45,8 @@ public class DotGame extends Activity implements View.OnTouchListener {
 
         ImageView imageview = new ImageView(DotGame.this);
         RelativeLayout relativelayout = findViewById(R.id.circlepanel);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout game = findViewById(R.id.games);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 
 
         // Add image path from drawable folder.
@@ -105,8 +107,13 @@ public class DotGame extends Activity implements View.OnTouchListener {
         relativelayout.addView(imageview);
         imageview.getLayoutParams().height = 125;
         imageview.requestLayout();
-        imageview.setX(random.nextInt(1000));
-        imageview.setY(random.nextInt(1000));
+        // these values need to change so they don't go out of bounds
+        imageview.setLeft(random.nextInt(circlepanel.getWidth()));
+        imageview.setRight(random.nextInt(circlepanel.getWidth()));
+        imageview.setTop(random.nextInt(circlepanel.getHeight()));
+        imageview.setBottom(random.nextInt(circlepanel.getHeight()));
+        imageview.setX(random.nextInt(circlepanel.getHeight()));
+        imageview.setY(random.nextInt(circlepanel.getWidth()));
         relativelayout.removeAllViews();
         relativelayout.addView(imageview);
         imageview.requestLayout();

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#000000">
 
     <Button
         android:id="@+id/home_button"
@@ -44,6 +44,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
         android:text="@string/app_name"
+        android:textColor="#FFFFFF"
         android:textAlignment="center"
         android:textAllCaps="true"
         android:textSize="22dp"
@@ -56,7 +57,7 @@
         android:layout_height="50dp"
         android:text="@string/results_score"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#292727"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.128"
@@ -69,9 +70,11 @@
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.335"
+
         app:layout_constraintStart_toEndOf="@+id/score"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.311" />
@@ -82,7 +85,7 @@
         android:layout_height="50dp"
         android:text="@string/results_accuracy"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#292727"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/real_accuracy"
         app:layout_constraintHorizontal_bias="0.476"
@@ -96,6 +99,7 @@
         android:layout_height="50dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.335"
         app:layout_constraintStart_toEndOf="@+id/score"
@@ -110,7 +114,7 @@
         android:gravity="center"
         android:text="@string/results_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#2E2D2D"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

@@ -42,9 +42,8 @@ public class PaintCircle extends View {
         if (timeToGo >= 0) {
             canvas.drawText(poggers, 475, 400, paint);
             canvas.drawText(Score,  750, 400, paint);
-
         }
-
+            invalidate();
     }
 
 }

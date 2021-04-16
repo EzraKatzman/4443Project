@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,8 +13,6 @@ import android.widget.TextView;
 
 import java.util.Locale;
 import java.util.Random;
-
-import static android.content.ContentValues.TAG;
 
 public class DotGame extends Activity implements View.OnTouchListener {
 
@@ -28,7 +25,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
     RelativeLayout relativeLayout;
     LinearLayout game;
 
-
+    int mouseclicks;
     int score;
     int seconds;
     Random random = new Random();
@@ -45,7 +42,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
 
         scoreCount = findViewById(R.id.clickcount1);
         timer = findViewById(R.id.timers);
-
+        mouseclicks = 0;
         seconds = 0;
         score = 0;
 
@@ -69,6 +66,7 @@ public class DotGame extends Activity implements View.OnTouchListener {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         score = 1;
+                        mouseclicks = 1;
                         scoreCount.setText(String.format(Locale.CANADA, "%s%d", getResources().getString(R.string.score_count)
                                 , score));
                         circlepanel.invalidate();
@@ -100,6 +98,8 @@ public class DotGame extends Activity implements View.OnTouchListener {
             @Override
             public void onFinish() {
                 Intent i = new Intent(getApplicationContext(), Results.class);
+                i.putExtra("MOUSECLICKS", mouseclicks);
+                i.putExtra("SCORE", score);
                 startActivityForResult(i, MAIN_ACTIVITY);
             }
         }.start();
@@ -151,7 +151,6 @@ public class DotGame extends Activity implements View.OnTouchListener {
         imageview.setBottom(random.nextInt(1250));
         imageview.setX(random.nextInt(550));
         imageview.setY(random.nextInt(650));
-        Log.d(TAG, String.valueOf(circlepanel.getHeight()));
         relativelayout.removeAllViews();
         relativelayout.addView(imageview);
     }
@@ -161,11 +160,12 @@ public class DotGame extends Activity implements View.OnTouchListener {
     public boolean onTouch(View v, MotionEvent event) {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                mouseclicks += 1;
                 DrawCircle();
                 circlepanel.invalidate();
                 break;
         }
         return false;
     }
-    }
+}
 

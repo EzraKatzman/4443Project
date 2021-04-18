@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.Locale;
 
 
@@ -18,7 +17,7 @@ public class Results extends Activity {
     int scorevalue;
     int mouseclicks;
     double accuracyvalue;
-    File file;
+
 
 
     @Override
@@ -37,11 +36,11 @@ public class Results extends Activity {
 
     public void onHomeClick(View v) {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(i, MAIN_ACTIVITY);
+        startActivity(i);
     }
 
     public void onRestartClick(View v) {
-        Intent i = new Intent(getApplicationContext(), DotGame.class);
-        startActivityForResult(i, DOT_GAME);
+        Intent l = new Intent(getApplicationContext(), DotGame.class);
+        startActivity(l);
     }
 }

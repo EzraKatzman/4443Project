@@ -1,12 +1,10 @@
 package com.example.project;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View v) {
         //Trying to see if we can start the other activity after we press start button.
         Intent i = new Intent(getApplicationContext(), DotGame.class);
-        startActivityForResult(i, MAIN_ACTIVITY);
+        startActivity(i);
     }
 
 }
